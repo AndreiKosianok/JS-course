@@ -11,4 +11,6 @@ for (var i = 0; i <= 2; i++) {
 	mainList.shopGoods[i] = prompt("Какой тип товаров будем продавать?")
 	};
 
-console.log('Бюджет на один день:',shopBudget/30);
+var dayBudget = mainList.shopBudget / 30;
+alert('Бюджет на 1 день: ' + dayBudget);
+console.log(mainList);
