@@ -18,7 +18,7 @@ let arr[i] = Math.floor(Math.random() * 1000); //напоминалка попр
 let arr = Array.from({length: 7}, () => Math.floor(Math.random() * 1000));
 */
 
-let arr = ['321', '456', '5469', '789', '546', '126'];
+let arr = ['321', '456', '5469', '789', '546', '126', '5644654'];
 for (var i = 0; i < arr.length; i++) {
 	if (arr[i][0] == '3' || arr[i][0] == '7') {
 		console.log(arr[i]);
