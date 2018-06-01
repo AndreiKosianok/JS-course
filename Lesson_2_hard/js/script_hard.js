@@ -14,7 +14,7 @@ for (i = 0; i < week.length; i++) {
 
 /*
 //Рандомно генерируют многозначные числа, пока не получилося вывод, доделаю
-let arr[i] = Math.floor(Math.random() * 1000);
+let arr[i] = Math.floor(Math.random() * 1000); //напоминалка попробовать через цикл заполнять
 let arr = Array.from({length: 7}, () => Math.floor(Math.random() * 1000));
 */
 
