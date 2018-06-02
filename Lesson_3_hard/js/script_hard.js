@@ -24,7 +24,7 @@ console.log(Math.sqrt(total));
 
 //пятый пункт задания
 
-function seleteSpaces (text) {
+function deleteSpaces (text) {
 	if ((typeof(text)) === 'string' && text.length > 50) {
 		let textresult = text.trim().substr(0, 50) + '...';
 		console.log(textresult);
@@ -36,4 +36,4 @@ function seleteSpaces (text) {
 			}
 };
 
-seleteSpaces(prompt('Введите текст с пробелами в начале и конце'));
+deleteSpaces(prompt('Введите текст с пробелами в начале и конце'));
