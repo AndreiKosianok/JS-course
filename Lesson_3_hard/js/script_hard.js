@@ -1,10 +1,12 @@
 str = 'урок-3-был слишком легким';
 
-let upLetter = str.slice(0, 1).toUpperCase() + str.slice(1), //первый пункт задания
+/*let upLetter = str.slice(0, 1).toUpperCase() + str.slice(1), //первый пункт задания
 	spaceReplace = upLetter.replace(/-/g, ' '), 			 //второй пункт задания
 	cutReplace = spaceReplace.replace(/легким/, ''),
-	lastReplace = cutReplace.slice(0, -3) + 'оо'; //третий пункт задания
-console.log(lastReplace);
+	lastReplace = cutReplace.slice(0, -3) + 'оо'; //третий пункт задания*/
+
+let finalReplace = str.slice(0, 1).toUpperCase() + str.slice(1).replace(/-/g, ' ').replace(/легким/, '').slice(0, -3) + 'оо';
+console.log(finalReplace);
 
 //четвёртый пункт задания
 
