@@ -2,6 +2,7 @@ let money,
 	name,
 	shopTime,
 	price,
+	discPrice,
 	dayBudget;
 	
 function shopStart() {
@@ -26,9 +27,10 @@ let mainList = {
 		discount: false
 	};
 
-function discountPrice () {
-	if ((typeof(mainList.discount)) === 'true') {
-		price*0.8
+function discountPrice (price) {
+	if (mainList.discount == true) {
+		alert('Вы получили скидку');
+		discPrice = price*0.8;
 	};
 };
 
