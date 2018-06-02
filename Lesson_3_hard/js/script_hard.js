@@ -17,13 +17,11 @@ console.log(Math.sqrt(total));
 let word = '   Введите какое-нибудь слово  ';
 
 function seleteSpaces (text) {
-	if ((typeof(text)) === 'string') {
-		console.log(text.trim());
-	} else if ((typeof(text)) === 'string' && text.length > 50) {
+	if ((typeof(text)) === 'string' && text.length > 50) {
 		let textresult = text.trim().substr(0, 50) + '...';
-		console.log(textresult)
-		} else {
-			alert('Повторите ввод');
+		console.log(textresult);
+	} else {
+		alert('Повторите ввод');
 	};
 };
 
