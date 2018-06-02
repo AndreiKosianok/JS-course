@@ -14,7 +14,7 @@ arr = [20, 33, 1, 'Человек', 2, 3];
 let total = 0;
 
 for (let i = 0; i < arr.length; i++) {
-	if (typeof(arr[i]) != 'string') {
+	if (typeof(arr[i]) == 'number') {
 	total += Math.pow(arr[i], 3);
 	} else {
 		arr.splice([i],1);
