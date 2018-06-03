@@ -27,12 +27,16 @@ let mainList = {
 		discount: false
 	};
 
-function discountPrice (price) {
+function discountPrice () {
 	if (mainList.discount == true) {
 		alert('Вы получили скидку');
+		price = prompt('Введите цену товара: ')
 		discPrice = price*0.8;
+		alert(discPrice);
 	};
 };
+
+discountPrice();
 
 for (let i = 0; i <= 2; i++) {
 	let a = prompt("Какой тип товаров будем продавать?");
@@ -81,4 +85,3 @@ function budgetPerDay() {
 budgetPerDay();
 
 console.log(mainList);
-console.log(mainList.employers);
