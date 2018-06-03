@@ -18,6 +18,7 @@ for (let i = 0; i < arr.length; i++) {
 	total += Math.pow(arr[i], 3);
 	} else {
 		arr.splice([i],1);
+		i--;
 	}
 };
 console.log(Math.sqrt(total));
