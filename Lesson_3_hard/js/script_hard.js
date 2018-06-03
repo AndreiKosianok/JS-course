@@ -6,7 +6,7 @@ str = 'урок-3-был слишком легким';
 	lastReplace = cutReplace.slice(0, -3) + 'оо'; //третий пункт задания*/
 
 let finalReplace = str.slice(0, 1).toUpperCase() + str.slice(1).replace(/-/g, ' ').replace(/легким/, '').slice(0, -3) + 'оо';
-console.log(finalReplace);
+document.write(finalReplace);
 
 //четвёртый пункт задания
 
