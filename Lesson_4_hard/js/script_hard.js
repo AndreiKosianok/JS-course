@@ -1,0 +1,1 @@
+function getFriendlyNumbers(start, end) {}
