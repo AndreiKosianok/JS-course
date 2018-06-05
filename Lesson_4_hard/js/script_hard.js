@@ -33,14 +33,18 @@ return [firstCompareNumber, secondCompareNumber];
 };
 
 function switchNumbers(compareNumber) {
-	let getCompareInit = compareInitNumbers();
-		i = getCompareInit[0],
-		j = getCompareInit[1];
-		console.log(i,j);
-	for (; i < j; i++) { //Определяем диапазон соответственно введенным числам
-		let switchNumberOne = i,
-			switchNumberTwo = j;
-		return [switchNumberOne, switchNumberTwo];
+	let getCompareInit = compareInitNumbers(),
+		switchNumberOne = +getCompareInit[0],
+		j = +getCompareInit[1],
+		switchNumberTwo = +switchNumberOne + 1;
+	for (; switchNumberOne < j;switchNumberOne++) { //Определяем диапазон соответственно введенным числам
+		switchNumberOne;
+		console.log(switchNumberOne, j);
+		for (;switchNumberTwo < j;switchNumberTwo++) {
+			switchNumberTwo;
+			console.log(switchNumberOne, switchNumberTwo);
+			return [switchNumberOne, switchNumberTwo];
+		}
 	}
 };
 
@@ -62,7 +66,7 @@ function getFriendlyNumbers(switchNumber) {
 	} 
 }
 
-//Эта функция принимает число и отдает сумму его делителей
+//Эта функция сначала принимает число, а потом отдает сумму его делителей
 function findDivSum(num) {
 	return sumDivisors(findDivisors(num));
 };
