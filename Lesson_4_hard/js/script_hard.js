@@ -6,7 +6,9 @@ let startNumber = 220,
 //switchNumbers();
 getFriendlyNumbers();
 
-function getRigthNumber() {	//Функция проверяет передачу правильных аргументов для диапазона
+//Функция проверяет передачу правильных аргументов для диапазона: число, не дробное. не отрицательное
+
+function getRigthNumber() {
 	let numbInit = prompt('Введите число диапазона', '');
 	console.log(typeof(numbInit));
 	//Этот блок будет проверять аргументы на условия: только числа, не отрицательный диапазон, не дробные числа
@@ -18,6 +20,8 @@ function getRigthNumber() {	//Функция проверяет передачу
 		}
 return numbInit;
 };
+
+//Функция проверяет передачу правильных аргументов для диапазона: что первое число меньше второго
 
 function compareInitNumbers(getnumbInit) {
 	let firstCompareNumber = getRigthNumber(getnumbInit),
@@ -31,11 +35,12 @@ function compareInitNumbers(getnumbInit) {
 	}
 return [firstCompareNumber, secondCompareNumber];
 };
-
+/*
+//Предполагается, что эта функция бедет заполнять массив парами чисел из заданного диапазона
 function switchNumbers(compareNumber) {
-	let getCompareInit = compareInitNumbers(),
-		switchNumberOne = +getCompareInit[0],
-		j = +getCompareInit[1],
+	let getCompareInit = compareInitNumbers(), //присваиваем функцию в переменную для более удобного доступа к возвращаемым данным
+		switchNumberOne = +getCompareInit[0], //присваиваем первой переменной значение начала интервала
+		j = +getCompareInit[1], //присваиваем второй переменной значение конца интервала 
 		switchNumberTwo = +switchNumberOne + 1;
 	for (; switchNumberOne < j;switchNumberOne++) { //Определяем диапазон соответственно введенным числам
 		switchNumberOne;
@@ -64,6 +69,28 @@ function getFriendlyNumbers(switchNumber) {
 		console.log(firstSumNumber);
 		console.log([]);
 	} 
+}
+*/
+
+//эта функция сравнивает два числа с суммами их делителей
+function getFriendlyNumbers(switchNumber) {
+	let getCompareInit = compareInitNumbers(), //присваиваем функцию в переменную для более удобного доступа к возвращаемым данным
+		i = +getCompareInit[0], //присваиваем первой переменной значение начала интервала
+		z = +getCompareInit[1]; //присваиваем второй переменной значение конца интервала 
+	console.log(i, z);
+	for (; i <= z; i++) {
+		for (j = i; j <= z; j++) {
+			let firstSumNumber = findDivSum(i); 			//Заносим в переменую сумму делителей первого числа
+			let secondSumNumber = findDivSum(j);			//Заносим в переменую сумму делителей второго числа
+			//Сравниваем первое число с суммой делителей второго и второе число с суммой делителей первого
+			if (i == secondSumNumber && firstSumNumber == j) {
+				console.log(firstSumNumber, secondSumNumber); 			//если сравнение верное - возвращаем два числа
+			} else {
+				console.log(firstSumNumber);
+				console.log([]);
+			} 
+		}
+	}
 }
 
 //Эта функция сначала принимает число, а потом отдает сумму его делителей
