@@ -98,8 +98,9 @@ console.log(mainList);
 */
 
 let totalMain = function totalMain() {
+				console.log('Наш магазин включает в себя: ');
 				for (var key in mainList) {
-					console.log('Наш магазин включает в себя: ' + mainList[key]);
+					console.log(mainList[key]);
 		}
 	},
 	outTotalG = document.getElementById('outToalG');
