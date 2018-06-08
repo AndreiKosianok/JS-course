@@ -97,9 +97,11 @@ time_value.addEventListener('change', () => {
 		if (time_value.value < 0) {
 				console.log('Такого не может быть!');
 				mainList.shopOpen = false;
+				mainList.discount = false;
 			} else if (time_value.value > 8 && time_value.value < 18) {
 				console.log('Время работать!');
 				mainList.shopOpen = true;
+				mainList.discount = false;
 				} else if (time_value.value > 18 && time_value.value < 24) {
 					console.log('Время скидок');
 					mainList.shopOpen = true;
@@ -115,6 +117,7 @@ time_value.addEventListener('change', () => {
 	else {
 		isOpen_value.style.backgroundColor = 'red'
 	};
+	
 	if (mainList.discount = true) {
 		discount_value.style.backgroundColor = 'green'
 	}
