@@ -5,47 +5,60 @@
 	<title>Hard</title>
 </head>
 <body>
-	<p id="currentTime"></p>
-	<hr>
-	<p id="currentDay"</p>
-	<p style="margin:auto;max-width:300px">
-	<input class="dCount" id="dateStart" value="09/14/2017">
-	<input class="dCount" id="dateEnd" value="09/12/2017">
-	<button class="dCount" type="button" onclick="timeCompare()">OK</button>
-	</p>
-	<p style="margin:auto;max-width:300px">Разница
-	<input class="dCount" id="dayCount" value="">
-	</p>
+	<div class="container">
+			<p id="currentTime"></p>
+			<hr>
+			<p id="currentDay"></p>
+			<p style="max-width:300px">
+				<div class="form">
+							<input class="dCount" id="dateStart" value="09/14/2017">
+							<input class="dCount" id="dateEnd" value="09/12/2017">
+				</div>
+			<button class="dCount" type="button" onclick="timeCompare()">OK</button>
+
+			<p style="max-width:300px">Разница	</p>
+			<input class="dCount" id="dayCount" value="">
+
+	</div>
 	<style >
+	.container {
+		width: 960px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0 auto;
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+	}
 		p {
-			text-align: center;
 			color: #fff;
 			font-size: 60px;
 			margin-top:30px;
+			margin-bottom: 0;
 			}
 			hr {
-				margin: auto;
 				width: 40%;
 				}
 				input.dCount {
-					text-align: center;
 					padding: 10px;
-				    font-size: 17px;
+				  font-size: 17px;
 					border: 1px solid grey;
-					float: left;
-					width: 80%;
 					background: #f1f1f1;
 				}
 				button {
-					float: left;
-				    width: 87.4%;
 					padding: 10px;
+					width: 232px;
 					background: #2196F3;
 					color: white;
 					font-size: 17px;
 					border: 1px solid grey;
 					border-left: none;
 				}
+	}
+	}
 	</style>
 	<script src='js/script_hard.js'></script>
 	<script src='js/TimeCompare.js'></script>
