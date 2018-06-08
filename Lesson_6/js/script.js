@@ -29,14 +29,15 @@ const mainList = {
 		employers: {},
 		shopOpen: true,
 		discount: false,
-		shopItems: [];
+		shopItems: []
 	};
+
 // Кнопка "Открыть магазин"
 count_budget_button.disabled = true;
 openButton.addEventListener('click', () => {
 		money = prompt("Ваш бюджет на месяц?", '');
 
-		while (isNaN(money) || money == '' || money == null) {
+		while (isNaN(money) || money === '' || money === null) {
 			money = prompt("Ваш бюджет на месяц?", '');
 		};
 		mainList.shopBudget = money;
@@ -89,29 +90,37 @@ choose_item.addEventListener('chamge', () => {
 			});
 
 // Открыто/закрыто
-time_value.addEventListener('change', () => {
-	let time = time_value.value
 
-	if (shopTime < 0) {
+time_value.addEventListener('change', () => {
+	
+		if (time_value.value < 0) {
 				console.log('Такого не может быть!');
 				mainList.shopOpen = false;
-			} else if (shopTime > 8 && shopTime < 20) {
+			} else if (time_value.value > 8 && time_value.value < 18) {
 				console.log('Время работать!');
 				mainList.shopOpen = true;
-				} else if (shopTime < 24) {
-					console.log('Уже слишком поздно!');
-					mainList.shopOpen = false;
+				} else if (time_value.value > 18 && time_value.value < 24) {
+					console.log('Время скидок');
+					mainList.shopOpen = true;
+					mainList.discount = true;
+					discountPrice();
 					} else {
 						console.log('В сутках только 24 часа!');
-						mainList.shopOpen = false;
-					};
+					}
 
 	if (mainList.shopOpen = true) {
 		isOpen_value.style.backgroundColor = 'green'
 	}
 	else {
 		isOpen_value.style.backgroundColor = 'red'
+	};
+	if (mainList.discount = true) {
+		discount_value.style.backgroundColor = 'green'
 	}
+	else {
+		discount_value.style.backgroundColor = 'red'
+	}
+
 });
 
 // Расчет дневного бюджета
@@ -143,12 +152,13 @@ hire_employers_button.addEventListener('click', () => {
 	};
 });
 
-	discountPrice: function discountPrice() {
-		if (mainList.discount == true) {
-			alert('Вы получили скидку');
-			price = prompt('Введите цену товара: ', '')
-			discPrice = price*0.8;
-			alert(discPrice);
-		}
-	};
+// Скидки действуют с 18 до 24 часов
+function discountPrice() {
+	if (mainList.discount == true) {
+		alert('Действуют скидки');
+		price = prompt('Введите цену товара: ', '')
+		discPrice = price*0.8;
+		alert(discPrice);
+	}
+};
 
