@@ -93,38 +93,29 @@ choose_item.addEventListener('change', () => {
 
 // Открыто/закрыто
 time_value.addEventListener('change', () => {
-	
-		if (time_value.value < 0) {
-				console.log('Такого не может быть!');
-				mainList.shopOpen = false;
-				mainList.discount = false;
-			} else if (time_value.value > 8 && time_value.value < 18) {
+		if (time_value.value < 8) {
+			console.log('Магазин ещё закрыт!');
+			console.log(time_value.value);
+			mainList.shopOpen = false;
+			mainList.discount = false;
+		} else if (time_value.value >= 8 && parseInt(time_value.value) <= 18) {
 				console.log('Время работать!');
 				mainList.shopOpen = true;
+				isOpen_value.style.backgroundColor = 'green';
 				mainList.discount = false;
-				} else if (time_value.value > 18 && time_value.value < 24) {
+				discount_value.style.backgroundColor = 'red';
+			} else if (time_value.value > 18 && parseInt(time_value.value) < 24) {
 					console.log('Время скидок');
 					mainList.shopOpen = true;
+					isOpen_value.style.backgroundColor = 'green';
 					mainList.discount = true;
+					discount_value.style.backgroundColor = 'green';
 					discountPrice();
 					} else {
+						mainList.shopOpen = false;
+						mainList.discount = false;
 						console.log('В сутках только 24 часа!');
-					}
-
-	if (mainList.shopOpen = true) {
-		isOpen_value.style.backgroundColor = 'green'
-	}
-	else {
-		isOpen_value.style.backgroundColor = 'red'
-	};
-	
-	if (mainList.discount = true) {
-		discount_value.style.backgroundColor = 'green'
-	}
-	else {
-		discount_value.style.backgroundColor = 'red'
-	}
-
+						}
 });
 
 // Расчет дневного бюджета

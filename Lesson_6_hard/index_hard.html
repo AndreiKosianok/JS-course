@@ -28,7 +28,7 @@
 			<div class="employers">Сотрудники: </div>
 			<div class="employers-value"></div>
 
-			<div class="discount">Дисконтная система </div>
+			<div class="discount">Дисконтная система c 18-24 </div>
 			<div class="discount-value"></div>
 
 			<div class="isopen">Открыто </div>
@@ -43,10 +43,10 @@
 			<button class="goods-item-btn">Утвердить</button>
 
 			<div class="choose-items">Введите продукты через запятую</div>
-			<input class="choose-item" type="text" id="items">
+			<input class="choose-item" type="text" id="items" onkeyup='this.value=this.value.replace(/,,/ig,",");'>
 
 			<div class="time">Сколько сейчас времени?</div>
-			<input class="time-value" type="text" id="time">
+			<input class="time-value" type="number" min='0' max='24' id="time">
 
 			<div class="count-budget">Расчет дневного бюджета</div>
 			<input class="count-budget-value" type="text" id="budget">
