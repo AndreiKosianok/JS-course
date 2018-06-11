@@ -18,7 +18,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			hideTabContent(0);
 			tabContent[b].classList.remove('hide');
 			tabContent[b].classList.add('show');
-			console.log('show done');
 		}
 	}
 
@@ -28,10 +27,30 @@ window.addEventListener('DOMContentLoaded', function() {
 			for (let i = 0; i < tab.length; i++) {
 				if (target == tab[i]) {
 					showTabContent(i);
-					console.log('event done')
 					break;
 				}
 			}
 		};
 	})
 });
+
+let timerUpdate = setInterval(function() {
+let date = new Date(),
+	currentDay = date.getDay(),
+	currentHour = (addZero(date.getHours()));
+	currentMinutes = (addZero(date.getMinutes()));
+	currentSeconds = (addZero(date.getSeconds()));
+
+function addZero(dateNumber){
+	if (dateNumber > 0 && dateNumber < 10) { 
+		return '0' + dateNumber;
+	} else {
+		return dateNumber;
+	}
+}
+let timerD = document.getElementById('timer');
+
+document.querySelector('.hours').innerText = currentHour; // Текущее время : часы
+document.querySelector('.minutes').innerText = currentMinutes; // Текущее время : минуты
+document.querySelector('.seconds').innerText = currentSeconds; // Текущее время : секунды
+}, 1000);
