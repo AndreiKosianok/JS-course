@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function() {
-	let tab = document.getElementsByClassName('Info-header-tab'),
+	let tab = document.getElementsByClassName('info-header-tab'),
 		tabContent = document.getElementsByClassName('info-tabcontent'),
 		info = document.getElementsByClassName('info-header')[0];
 
@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		for (let i = a; i <tabContent.length; i++) {
 			tabContent[i].classList.remove('show');
 			tabContent[i].classList.add('hide');
+			console.log('hide done');
 		}
 	}
 
@@ -15,8 +16,9 @@ window.addEventListener('DOMContentLoaded', function() {
 	function showTabContent(b) {
 		if (tabContent[b].classList.contains('hide')) {
 			hideTabContent(0);
-			tabcontent[b].classList.remove('hide');
+			tabContent[b].classList.remove('hide');
 			tabContent[b].classList.add('show');
+			console.log('show done');
 		}
 	}
 
@@ -26,6 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			for (let i = 0; i < tab.length; i++) {
 				if (target == tab[i]) {
 					showTabContent(i);
+					console.log('event done')
 					break;
 				}
 			}
