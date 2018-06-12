@@ -1,7 +1,5 @@
 let	ball = document.getElementById('ball'),
-	start = document.getElementById('start'),
 	stop = document.getElementById('stop'),
-	animateBall;
 	position = 50;
 
 function ballMove() {
@@ -12,8 +10,6 @@ function ballMove() {
 	}
    animateBall = requestAnimationFrame(ballMove);
 }
-
-animateBall = requestAnimationFrame(ballMove);
 
 start.onclick = function() {
     animateBall = requestAnimationFrame(ballMove);
