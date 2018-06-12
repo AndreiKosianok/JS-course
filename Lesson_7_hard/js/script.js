@@ -5,7 +5,7 @@ let	ball = document.getElementById('ball'),
 
 
 function ballMove() {
-	position = position + 50 + 'px';
+	position = position + 50;
 	ball.style.left = (position + 'px');
 	if (position >= 900) {
 		position = 0;
