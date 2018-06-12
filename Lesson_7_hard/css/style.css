@@ -1,0 +1,25 @@
+body {
+	background: #333; margin: 0; padding: 0;
+}
+button {
+	position: relative;
+	width: 10vmin; height: 5vmin;
+	top: 20px;
+	left: 20px;
+	background: #999;
+}
+#start {
+
+}
+#stop {
+	left: 20px;
+}
+#ball {
+	position: relative;
+	left: 50px;
+	top: 80px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	background: linear-gradient(#f90, #95a);
+}
