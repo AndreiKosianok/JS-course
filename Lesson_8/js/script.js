@@ -65,7 +65,7 @@ function getTimeRemaining(endtime){
 			seconds = (addZero(Math.floor((t/1000) % 60))), 
 			minutes = (addZero(Math.floor((t/1000/60) % 60))),
 			hours = (addZero(Math.floor((t/(1000*60*60)) - offset)));
-console.log(offset);
+
 			function addZero(dateNumber){
 				if (dateNumber >= 0 && dateNumber < 10) { 
 					return '0' + dateNumber;
