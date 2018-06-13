@@ -4,7 +4,7 @@ let	ball = document.getElementById('ball'),
 
 function ballMove() {
 	let rotateBall = 'rotate(' + position.toString() + 'deg)'
-	position = position + 10;
+	position = position + 5;
 	ball.style.transform = rotateBall;
 	ball.style.left = position + 'px';
 	if (position >= 900) {
