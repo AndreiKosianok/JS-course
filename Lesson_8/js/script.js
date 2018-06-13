@@ -56,7 +56,7 @@ document.querySelector('.seconds').innerText = currentSeconds; // Текущее
 }, 1000);
 */
 
-let deadline = '2018-06-14';
+let deadline = '2018-06-13';
 
 function getTimeRemaining(endtime){
 
@@ -85,26 +85,27 @@ function getTimeRemaining(endtime){
 function setClock(id, endtime){
 
 	let timer = document.getElementById(id),
-			hours = timer.querySelector('.hours'),
-			minutes = timer.querySelector('.minutes'),
-			seconds = timer.querySelector('.seconds');
+		hours = timer.querySelector('.hours'),
+		minutes = timer.querySelector('.minutes'),
+		seconds = timer.querySelector('.seconds');
 				
-			function updateClock(){
-				let t = getTimeRemaining(endtime);
-				hours.innerHTML = t.hours;
-				minutes.innerHTML = t.minutes;
-				seconds.innerHTML = t.seconds;
+		function updateClock(){
+			let t = getTimeRemaining(endtime);
+			hours.innerHTML = t.hours;
+			minutes.innerHTML = t.minutes;
+			seconds.innerHTML = t.seconds;
 
-				if(t.total <= 0){
-					clearInterval(timeInterval);
-					timer.querySelector('.seconds').textContent = '00',
-					timer.querySelector('.hours').textContent = '00',
-					timer.querySelector('.minutes').textContent = '00';
-				}
+			if(t.total <= 0){
+				clearInterval(timeInterval);
+				hours.innerHTML = '00',
+				minutes.innerHTML = '00',
+				seconds.innerHTML = '00';
+			}
 				
-			};
-			let timeInterval = setInterval(updateClock, 1000);
-			updateClock();
+		};
+
+	let timeInterval = setInterval(updateClock, 1000);
+	updateClock();
 				
 	};
 	setClock('timer', deadline);
