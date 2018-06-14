@@ -111,16 +111,16 @@ let menu = document.getElementsByTagName('ul')[0], //получаем родит
 
 		requestAnimationFrame(scrollAnimation);
 		function scrollAnimation() { //функция перехода
-				if (positionStart < positionStop) {
-					positionStart = positionStart + Math.round(distance / 2),
-					distance -= Math.round(distance / 2),
+				if (positionStart < positionStop && distance > 5) {
+					positionStart = positionStart + (distance / 30),
+					distance -= (distance / 30),
+					console.log(distance)
 					scrollTo(0, positionStart);
-					console.log('ещё считаю')
-				} else if (positionStart > positionStop) {
-					positionStart = positionStart - Math.round(distance / 2),
-					distance -= Math.round(distance / 2),
+				} else if (positionStart > positionStop && distance > 5) {
+					positionStart = positionStart - (distance / 30),
+					distance -= (distance / 30),
+					console.log(distance)
 					scrollTo(0, positionStart);
-					console.log('ещё считаю')
 				} else return;
 			requestAnimationFrame(scrollAnimation);
 		}
