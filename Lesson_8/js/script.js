@@ -56,16 +56,16 @@ document.querySelector('.seconds').innerText = currentSeconds; // Текущее
 }, 1000);
 */
 
-	let deadline = '2018-06-13';
+	let deadline = '2018-06-15';
 
 	function getTimeRemaining(endtime){
 
-		let t = Date.parse(endtime) - Date.parse(new Date()),
-			offset = new Date().getTimezoneOffset() / 60,
+		let offset = new Date().getTimezoneOffset() * 60000,
+			t = Date.parse(endtime) - Date.parse(new Date()) + offset,
 				seconds = (addZero(Math.floor((t/1000) % 60))), 
 				minutes = (addZero(Math.floor((t/1000/60) % 60))),
-				hours = (addZero(Math.floor((t/(1000*60*60)) + offset)));
-
+				hours = (addZero(Math.floor(t/(1000*60*60))));
+			console.log(t)
 				function addZero(dateNumber){
 					if (dateNumber >= 0 && dateNumber < 10) { 
 						return '0' + dateNumber;
