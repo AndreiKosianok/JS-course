@@ -180,7 +180,9 @@ let menu = document.getElementsByTagName('ul')[0], //получаем родит
 					overlay.classList.remove('fade');
 					overlay.style.transform = 'rotate(' + timePassed + 'deg)'
 				}, 360);
-		}
+			} else {
+				overlay.classList.remove('fade');
+			}
 	}
 
 	function animate(draw, duration) {
