@@ -173,9 +173,11 @@ let menu = document.getElementsByTagName('ul')[0], //получаем родит
 		overlay.style.display = 'block';
 		document.body.style.overflow = 'hidden';
 		if (mobileBrowser() === false && !isIE) {
+				overlay.classList.remove('fade');
 				overlay.classList.add('some-animation');
 			} else if (mobileBrowser() === false) {
 				animate(function(timePassed) {
+					overlay.classList.remove('fade');
 					overlay.style.transform = 'rotate(' + timePassed + 'deg)'
 				}, 360);
 		}
