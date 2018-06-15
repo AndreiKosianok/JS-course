@@ -10,7 +10,7 @@ function ballMove() {
 	if (position >= 900) {
 		position = 0;
 	}
-   animateBall = requestAnimationFrame(ballMove);
+	animateBall = requestAnimationFrame(ballMove);
 }
 
 start.onclick = function() {
