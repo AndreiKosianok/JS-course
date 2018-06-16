@@ -1,7 +1,11 @@
 window.addEventListener("DOMContentLoaded", function() {
 
 	let keyCode,
-		input = document.querySelector('#tel');
+		input = document.getElementById('tel');
+
+	input.addEventListener('input', mask, false);
+	input.addEventListener('focus', mask, false);
+	input.addEventListener('blur', mask, false);
 
 	function mask(event) {
 			event.KeyCode && (keyCode = event.keyCode);
@@ -17,7 +21,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		i = new_value.indexOf('_');
 		if (i != -1) {
-			i < 5 && (i = 3);
+			i < 5 && (i = 1);
 			new_value = new_value.slice(0, i)
 		}
 
@@ -29,17 +33,13 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		reg = new RegExp('^' + reg +'$');
 
-		if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+		if (!reg.test(this.value) || this.value.length < 1 || keyCode > 47 && keyCode < 58) {
 			this.value = new_value;
 		}
 
-		if (event.type == 'blur' && this.value.length < 5) {
+		if (event.type == 'blur' && this.value.length < 1) {
 			this.value = '';
 		}
 	}
-
-	input.addEventListener('input', mask, false);
-	input.addEventListener('focus', mask, false);
-	input.addEventListener('blur', mask, false);
 
 });
