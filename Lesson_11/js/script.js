@@ -204,7 +204,7 @@ window.addEventListener('DOMContentLoaded', function() {
 					let request = new XMLHttpRequest();
 					request.open('POST', 'server.php');
 
-					request.setRequestHeader('Cоntent-Type', 'application/x-www-form-urlencode');
+					request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 					let formData = new FormData(this);
 
