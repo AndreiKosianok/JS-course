@@ -187,44 +187,47 @@ window.addEventListener('DOMContentLoaded', function() {
 		message.success = 'Спасибо! Скоро мы с вами свяжемся';
 		message.failure = 'Что-то пошло не так...';
 
-	let form = document.querySelectorAll('form'),
-		formInput = form.getElementsByTagName('input'),
+		//модальное окно
+	let form = document.getElementsByClassName('main-form')[0];
+		input = form.getElementsByTagName('input'),
+		//контактная форма
+		contactForm = document.getElementsByClassName('contact-form')[0],
+		contactInput = contactForm.getElementsByTagName('input'),
+		//статус-сообщения
 		statusMessage = document.createElement('div');
 		statusMessage.classList.add('status');
 
 		//ожидание события для модального окна
-		for (i =0; i < form.length; i++) {
-			form[i].addEventListener('submit', function(event) {
-				event.preventDefault();
-				form.appendChild(statusMessage);
+		form.addEventListener('submit', function(event) {
+			event.preventDefault();
+			form.appendChild(statusMessage);
 
-				//AJAX
-				let request = new XMLHttpRequest();
-				request.open('POST', 'server.php')
+			//AJAX
+			let request = new XMLHttpRequest();
+			request.open('POST', 'server.php')
 
-				request.setRequestHeader('Cоntent-Type', 'application/x-www-form-urlencode');
+			request.setRequestHeader('Cоntent-Type', 'application/x-www-form-urlencode');
 
-				let formData = new FormData(form);
+			let formData = new FormData(form);
 
-				request.send(formData);
+			request.send(formData);
 
-				request.onreadystatechange = function() {
-					if (request.readyState < 4) {
-						statusMessage.innerHTML = message.loading;
-					} else if (request.readyState === 4) {
-						if (request.status == 200 && request.status < 300) {
-							statusMessage.innerHTML = message.success;
-							//контент
-						} else {
-							statusMessage.innerHTML = message.failure;
-						}
+			request.onreadystatechange = function() {
+				if (request.readyState < 4) {
+					statusMessage.innerHTML = message.loading;
+				} else if (reaues.readyState === 4) {
+					if (request.status == 200 && request.status < 300) {
+						statusMessage.innerHTML = message.success;
+						//контент
+					} else {
+						statusMessage.innerHTML = message.failure;
 					}
 				}
-				for (let i = 0; i < formInput.length; i++) {
-					formInput[i].value = '';
-					//очищяем поля ввода
-				}
-			});
-		}
+			}
+			for (let i = 0; i < input.length; i++) {
+				input[i].value = '';
+				//очищяем поля ввода
+			}
+		});
 
 });
