@@ -192,38 +192,42 @@ window.addEventListener('DOMContentLoaded', function() {
 		statusMessage.classList.add('status');
 
 		//ожидание события для модального окна
-			for (i =0; i < form.length; i++) form[i].addEventListener('submit', function(event) {
-				event.preventDefault();
-				this.appendChild(statusMessage);
+			for (i = 0; i < form.length; i++) {
+				form[i].addEventListener('submit', requestResponse);
+			};
 
-				//AJAX
-				let request = new XMLHttpRequest();
-				request.open('POST', 'server.php')
+				function requestResponse(event) {
+					event.preventDefault();
+					this.appendChild(statusMessage);
 
-				request.setRequestHeader('Cоntent-Type', 'application/x-www-form-urlencode');
+					//AJAX
+					let request = new XMLHttpRequest();
+					request.open('POST', 'server.php');
 
-				let formData = new FormData(this);
+					request.setRequestHeader('Cоntent-Type', 'application/x-www-form-urlencode');
 
-				request.send(formData);
+					let formData = new FormData(this);
 
-				request.onreadystatechange = function() {
-					if (request.readyState < 4) {
-						statusMessage.innerHTML = message.loading;
-					} else if (request.readyState === 4) {
-						if (request.status == 200 && request.status < 300) {
-							statusMessage.innerHTML = message.success;
-							//контент
-						} else {
-							statusMessage.innerHTML = message.failure;
+					request.send(formData);
+
+					request.onreadystatechange = function() {
+						if (request.readyState < 4) {
+							statusMessage.innerHTML = message.loading;
+						} else if (request.readyState === 4) {
+							if (request.status == 200 && request.status < 300) {
+								statusMessage.innerHTML = message.success;
+								//контент
+							} else {
+								statusMessage.innerHTML = message.failure;
+							}
 						}
 					}
-				}
 
-				let formInput = this.getElementsByTagName('input');
-				for (let i = 0; i < formInput.length; i++) {
-					formInput[i].value = '';
-					//очищяем поля ввода
-				}
-			});
-
+					let formInput = this.getElementsByTagName('input');
+					for (let i = 0; i < formInput.length; i++) {
+						formInput[i].value = '';
+						//очищяем поля ввода
+					}
+				};
+			
 });
