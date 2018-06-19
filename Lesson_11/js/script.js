@@ -188,15 +188,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		message.failure = 'Что-то пошло не так...';
 
 	let form = document.querySelectorAll('form'),
-		formInput = form.getElementsByTagName('input'),
 		statusMessage = document.createElement('div');
 		statusMessage.classList.add('status');
 
 		//ожидание события для модального окна
-		for (i =0; i < form.length; i++) {
-			form[i].addEventListener('submit', function(event) {
+			for (i =0; i < form.length; i++) form[i].addEventListener('submit', function(event) {
 				event.preventDefault();
-				form.appendChild(statusMessage);
+				this.appendChild(statusMessage);
 
 				//AJAX
 				let request = new XMLHttpRequest();
@@ -204,7 +202,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 				request.setRequestHeader('Cоntent-Type', 'application/x-www-form-urlencode');
 
-				let formData = new FormData(form);
+				let formData = new FormData(this);
 
 				request.send(formData);
 
@@ -220,11 +218,12 @@ window.addEventListener('DOMContentLoaded', function() {
 						}
 					}
 				}
+
+				let formInput = this.getElementsByTagName('input');
 				for (let i = 0; i < formInput.length; i++) {
 					formInput[i].value = '';
 					//очищяем поля ввода
 				}
 			});
-		}
 
 });
