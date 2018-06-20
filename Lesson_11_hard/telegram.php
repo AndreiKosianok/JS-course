@@ -2,7 +2,7 @@
 
 //  https://api.telegram.org/bot616661434:AAFvA-tHFZsKAvXxoaxGcZeLqxkvhdoLss0/getUpdates
 
-$phone = $_POST["phone"];
+$phone = $_POST["name"];
 $email = $_POST["email"];
 $token = "616661434:AAFvA-tHFZsKAvXxoaxGcZeLqxkvhdoLss0";
 $chat_id = "-305823088";
