@@ -283,7 +283,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	dotsWrap.addEventListener('click', function(event) {
 		for (let i = 0; i < dots.length + 1; i++) {
 			if (event.target.classList.contains('dot') && event.target == dots[i-1]) {
-				currentSlide[i];
+				currentSlide(i);
 			}
 		}
 	});
@@ -306,7 +306,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
 			totalValue.innerHTML = 0;
 		} else {
-			totalValue.innerHTML = total;
+			animateValue(+totalValue.innerText, total, 1000);
 		}
 	});
 
@@ -316,7 +316,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
 			totalValue.innerHTML = 0;
 		} else {
-			totalValue.innerHTML = total;
+			animateValue(+totalValue.innerText, total, 1000);
 		}
 	});
 
@@ -325,7 +325,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			totalValue.innerHTML = 0;
 		} else {
 			let a = total;
-			totalValue.innerHTML = a * this.options[this.selectedIndex].value;
+			animateValue(+totalValue.innerText, a * this.options[this.selectedIndex].value, 1000);
 		}
 	});
 
@@ -336,5 +336,20 @@ window.addEventListener('DOMContentLoaded', function() {
 	function numberDetect () {
 		this.value = this.value.replace(/[^\d]/g, '')
 	}
+
+	function animateValue(start, end, duration) {
+		let range = end - start,
+			current = start,
+			increment = end > start? 100 : -100,
+			stepTime = Math.abs(Math.floor(duration / range)),
+			timer = setInterval(function() {
+			current += increment;
+			totalValue.innerHTML = current;
+			if (current == end) {
+				clearInterval(timer);
+			}
+	    }, stepTime);
+	}
+
 
 });
