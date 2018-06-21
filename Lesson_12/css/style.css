@@ -22,6 +22,42 @@
     opacity: 1;
   }
 }
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(5%, 0, 0);
+            transform: translate3d(5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(5%, 0, 0);
+            transform: translate3d(5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+          animation-name: fadeInRight;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
 .more-splash {
   -webkit-animation-name: splash;
           animation-name: splash;
