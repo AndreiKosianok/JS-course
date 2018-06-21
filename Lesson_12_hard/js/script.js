@@ -192,42 +192,164 @@ window.addEventListener('DOMContentLoaded', function() {
 		statusMessage.classList.add('status');
 
 		//ожидание события для модального окна
-			for (i = 0; i < form.length; i++) {
-				form[i].addEventListener('submit', requestResponse);
-			};
+	for (i = 0; i < form.length; i++) {
+		form[i].addEventListener('submit', requestResponse);
+	};
 
-				function requestResponse(event) {
-					event.preventDefault();
-					this.appendChild(statusMessage);
+		function requestResponse(event) {
+			event.preventDefault();
+			this.appendChild(statusMessage);
 
-					//AJAX
-					let request = new XMLHttpRequest();
-					request.open('POST', 'server.php');
+			//AJAX
+			let request = new XMLHttpRequest();
+			//request.open('POST', 'server.php');
+			request.open('POST', 'telegram.php');
 
-					request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-					let formData = new FormData(this);
+			let formData = new FormData(this);
+				formInput = this.getElementsByTagName('input');
+		
+			for (let i = 0; i < formInput.length; i++) {
+				formData.append([i], formInput[i].value)
+				formInput[i].value = '';
+				//очищяем поля ввода
+			}
+			console.log(formData);
+			request.send(formData);
 
-					request.send(formData);
-
-					request.onreadystatechange = function() {
-						if (request.readyState < 4) {
-							statusMessage.innerHTML = message.loading;
-						} else if (request.readyState === 4) {
-							if (request.status == 200 && request.status < 300) {
-								statusMessage.innerHTML = message.success;
-								//контент
-							} else {
-								statusMessage.innerHTML = message.failure;
-							}
-						}
+			request.onreadystatechange = function() {
+				if (request.readyState < 4) {
+					statusMessage.innerHTML = message.loading;
+				} else if (request.readyState === 4) {
+					if (request.status == 200 && request.status < 300) {
+						statusMessage.innerHTML = message.success;
+						//контент
+					} else {
+						statusMessage.innerHTML = message.failure;
 					}
+				}
+			}
 
-					let formInput = this.getElementsByTagName('input');
-					for (let i = 0; i < formInput.length; i++) {
-						formInput[i].value = '';
-						//очищяем поля ввода
-					}
-				};
-			
+		};
+
+	//Слайдер
+	let slideIndex = 1,
+		slides = document.getElementsByClassName('slider-item'),
+		prev = document.querySelector('.prev'),
+		next = document.querySelector('.next'),
+		dotsWrap = document.querySelector('.slider-dots'),
+		dots = document.getElementsByClassName('dot');
+
+	showSlides(slideIndex);
+
+	function showSlides(n) {
+
+		if (n > slides.length) {
+			slideIndex = 1;
+		};
+		if (n < 1) {
+			slideIndex = slides.length;
+		};
+
+		for (let i = 0; i < slides.length; i++) {
+			slides[i].style.display = 'none';
+		};
+
+		for (let i = 0; i < dots.length; i++) {
+			dots[i].classList.remove('dot-active');
+		};
+
+		slides[slideIndex - 1].style.display = 'block';
+		dots[slideIndex - 1].classList.add('dot-active');
+	}
+
+	function plusSlides (n) {
+		showSlides(slideIndex += n)
+	}
+
+	function currentSlide(n) {
+		showSlides(slideIndex = n)
+	}
+
+	prev.addEventListener('click', function() {
+		plusSlides(-1)
+	})
+
+	next.addEventListener('click', function() {
+		plusSlides(1)
+	})
+
+	dotsWrap.addEventListener('click', function(event) {
+		for (let i = 0; i < dots.length + 1; i++) {
+			if (event.target.classList.contains('dot') && event.target == dots[i-1]) {
+				currentSlide(i);
+			}
+		}
+	});
+
+	//Калькулятор
+	let persons = document.getElementsByClassName('counter-block-input')[0],
+		restDays = document.getElementsByClassName('counter-block-input')[1],
+		place = document.getElementById('select'),
+		totalValue = document.getElementById('total'),
+		personSum = 0,
+		daysSum = 0,
+		total = 0;
+
+	totalValue.innerHTML = 0;
+
+	persons.addEventListener('change', function() {
+
+		personSum = +this.value
+		total = (daysSum + personSum)* 4000;
+		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
+			totalValue.innerHTML = 0;
+		} else {
+			animateValue(+totalValue.innerText, total, 1000);
+		}
+	});
+
+	restDays.addEventListener('change', function() {
+		daysSum = +this.value
+		total = (daysSum + personSum)* 4000;
+		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
+			totalValue.innerHTML = 0;
+		} else {
+			animateValue(+totalValue.innerText, total, 1000);
+		}
+	});
+
+	place.addEventListener('change', function() {
+		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
+			totalValue.innerHTML = 0;
+		} else {
+			let a = total;
+			animateValue(+totalValue.innerText, a * this.options[this.selectedIndex].value, 1000);
+		}
+	});
+
+	persons.onkeyup = numberDetect;
+	restDays.onkeyup = numberDetect;
+
+
+	function numberDetect () {
+		this.value = this.value.replace(/[^\d]/g, '')
+	}
+
+	function animateValue(start, end, duration) {
+		let range = end - start,
+			current = start,
+			increment = end > start? 100 : -100,
+			stepTime = Math.abs(Math.floor(duration / range)),
+			timer = setInterval(function() {
+			current += increment;
+			totalValue.innerHTML = current;
+			if (current == end) {
+				clearInterval(timer);
+			}
+	    }, stepTime);
+	}
+
+
 });
