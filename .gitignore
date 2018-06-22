@@ -1,3 +1,4 @@
 .thumbs
 .idea
+node_modules/
 /test/
