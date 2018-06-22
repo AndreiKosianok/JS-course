@@ -54,7 +54,7 @@ jQuery(document).ready(function() {
 			type: 'POST',
 			success: () => {
 				formInline.find('input').val('')
-				formInline.append("<p>Успешно</p>");
+				//formInline.append("<p>Успешно</p>");
 			}
 			})
 	})
