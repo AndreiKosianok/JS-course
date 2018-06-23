@@ -23,6 +23,7 @@ var myFunc = function(a){
 	return newArr;
 }
 console.log(each(arr, myFunc));
+console.log(typeof each(arr, myFunc));
 
 let assert = require('chai').assert;
 
@@ -32,7 +33,7 @@ describe('myTests', function() {
 		assert.equal(sum(6,6), true);
 		assert.equal(num, 5);
 		assert.typeOf(each(arr,myFunc), 'array');
-		assert.equal(JSON.stringify(each(arr, myFunc)), JSON.stringify([8, 7, 6, 5, 4]));
+		assert.equal(Array.isArray(each(arr, myFunc)), Array.isArray([8, 7, 6, 5, 4]));
 		assert.property(each(arr,myFunc), 'length');
 
 	})
