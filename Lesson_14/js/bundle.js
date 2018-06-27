@@ -356,8 +356,8 @@ function timer() {
 
 	function getTimeRemaining(endtime){
 
-		let //offset = new Date().getTimezoneOffset() / 60,
-			t = Date.parse(endtime) - Date.parse(new Date()),
+		let offset = new Date().getTimezoneOffset() / 60000,
+			t = Date.parse(endtime) - Date.parse(new Date() + offset),
 				seconds = (addZero(Math.floor((t/1000) % 60))), 
 				minutes = (addZero(Math.floor((t/1000/60) % 60))),
 				hours = (addZero(Math.floor(t/(1000*60*60))));

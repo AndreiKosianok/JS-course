@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		};
 	})
 
-	let deadline = '2018-06-15';
+	let deadline = '2018-06-28';
 
 	function getTimeRemaining(endtime){
 
