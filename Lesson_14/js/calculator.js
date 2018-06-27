@@ -16,7 +16,7 @@ function calculator() {
 		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
 			totalValue.innerHTML = 0;
 		} else {
-			animateValue(+totalValue.innerText, total, 1000);
+			animateValue(+totalValue.innerText, total * place.value, 1000);
 		}
 	});
 
@@ -26,7 +26,7 @@ function calculator() {
 		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
 			totalValue.innerHTML = 0;
 		} else {
-			animateValue(+totalValue.innerText, total, 1000);
+			animateValue(+totalValue.innerText, total * place.value, 1000);
 		}
 	});
 

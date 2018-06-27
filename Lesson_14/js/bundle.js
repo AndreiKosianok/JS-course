@@ -72,7 +72,7 @@ function calculator() {
 		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
 			totalValue.innerHTML = 0;
 		} else {
-			animateValue(+totalValue.innerText, total, 1000);
+			animateValue(+totalValue.innerText, total * place.value, 1000);
 		}
 	});
 
@@ -82,7 +82,7 @@ function calculator() {
 		if (restDays.value == '' || restDays.value == 0 || persons.value == '' || persons.value == 0) {
 			totalValue.innerHTML = 0;
 		} else {
-			animateValue(+totalValue.innerText, total, 1000);
+			animateValue(+totalValue.innerText, total * place.value, 1000);
 		}
 	});
 
@@ -352,15 +352,15 @@ function tabs() {
 module.exports = tabs;
 },{}],8:[function(require,module,exports){
 function timer() {
-	let deadline = '2018-06-15';
+	let deadline = '2018-06-28';
 
 	function getTimeRemaining(endtime){
 
-		let offset = new Date().getTimezoneOffset() * 60000,
-			t = Date.parse(endtime) - Date.parse(new Date()) + offset,
+		let //offset = new Date().getTimezoneOffset() / 60,
+			t = Date.parse(endtime) - Date.parse(new Date()),
 				seconds = (addZero(Math.floor((t/1000) % 60))), 
 				minutes = (addZero(Math.floor((t/1000/60) % 60))),
-				hours = (addZero(Math.floor((t/(1000*60*60)) + offset)));
+				hours = (addZero(Math.floor(t/(1000*60*60))));
 
 				function addZero(dateNumber){
 					if (dateNumber >= 0 && dateNumber < 10) { 
