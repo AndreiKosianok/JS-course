@@ -22,42 +22,6 @@
     opacity: 1;
   }
 }
-
-@-webkit-keyframes fadeInRight {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(5%, 0, 0);
-            transform: translate3d(5%, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(5%, 0, 0);
-            transform: translate3d(5%, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-}
-
-.fadeInRight {
-  -webkit-animation-name: fadeInRight;
-          animation-name: fadeInRight;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-}
-
 .more-splash {
   -webkit-animation-name: splash;
           animation-name: splash;
@@ -80,20 +44,12 @@
     box-shadow: 0 0 60px #c78030;
   }
 }
-.some-animation {
-    animation: drop 0.5s ease forwards;
-}
-@keyframes drop {
-  0%{opacity: 0}
-  100%{transform: translateY(200px); opacity: 1;}
-}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   outline: none;
   font-family: "Roboto Slab";
-  color: #fff;
 }
 a {
   color: inherit;
@@ -657,7 +613,7 @@ header ul li:before {
   display: none;
   top: 0;
   width: 100%;
-  height: 65%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 3;
 }
