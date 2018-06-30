@@ -1,0 +1,1 @@
+import mainSlider from 'packParts/mainSlider.js';
