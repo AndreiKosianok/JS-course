@@ -1,4 +1,4 @@
-//Слайдер
+// Верхний Main слайдер
 function mainSlider() {
 	
 	let mainSlideIndex = 1, // 0 - fro v2
