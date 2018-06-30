@@ -3,16 +3,16 @@ window.addEventListener('DOMContentLoaded', function() {
 	//Слайдер
 
 	
-	let mainSlideIndex = 0,
+	let mainSlideIndex = 1, // 0 - fro v2
 		mainSlides = document.getElementsByClassName('main-slider-item');
 
-	showMainSlides()
-
 	// Вариант 1
- 	/*
+
+	showMainSlides(mainSlideIndex);
+ 	
 	function showMainSlides(n) {
 
-		if (n > mainSlideIndex.length) {
+		if (n > mainSlides.length) {
 			mainSlideIndex = 1
 		}
 		if (n < 1 ) {
@@ -27,7 +27,16 @@ window.addEventListener('DOMContentLoaded', function() {
 		mainSlides[mainSlideIndex - 1].style.display = 'block';
 		mainSlides[mainSlideIndex - 1].classList.add('animated', 'fadeInDown')
 	};
-	*/
+
+	let setSlideInterval = setInterval(
+		function() {
+			changeMainSlides(1)}
+			, 5000);
+
+	function changeMainSlides (n) {
+		showMainSlides(mainSlideIndex += n)
+	}
+	
 
 	// Вариант 2	
 	/*
