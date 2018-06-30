@@ -85,9 +85,10 @@ window.addEventListener('DOMContentLoaded', function() {
 		})
 	}
 		//Модалка подарка
-		giftButton.addEventListener('click', () => {
-			modalPopupGift.style.display = 'flex';
-		});
+	giftButton.addEventListener('click', () => {
+		modalPopupGift.style.display = 'flex';
+		giftButton.style.display = 'none';
+	});
 	
 	//Модальные окна закрываются по клику на крестик
 	for (let i = 0; i < modalPopupClose.length; i++) {
