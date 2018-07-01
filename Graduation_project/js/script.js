@@ -63,9 +63,12 @@ window.addEventListener('DOMContentLoaded', function() {
 		modalPopupDesign = document.querySelector('.popup-design'),
 		modalPopupConsultation = document.querySelector('.popup-consultation'),
 		modalPopupGift = document.querySelector('.popup-gift'),
+		modalScope = [modalPopupConsultation, modalPopupGift, modalPopupDesign],
 
 		//Крестик
 		modalPopupClose = document.querySelectorAll('.popup-close');
+		console.log(modalScope);
+		console.log(modalPopupClose);
 
 	//Модальные окна открываются по клику на кнопку
 
@@ -92,13 +95,26 @@ window.addEventListener('DOMContentLoaded', function() {
 	
 	//Модальные окна закрываются по клику на крестик
 	for (let i = 0; i < modalPopupClose.length; i++) {
-		modalPopupClose[i].addEventListener('click', () => { //надо подумать над менее громоздким способом закрытия модалок
+		modalPopupClose[i].addEventListener('click', () => { 
+			modalScope[i].style.display = 'none';
+			/*//надо подумать над менее громоздким способом закрытия модалок
 			modalPopupDesign.style.display = 'none';
 			modalPopupConsultation.style.display = 'none';
-			modalPopupGift.style.display = 'none';
+			modalPopupGift.style.display = 'none';*/
 
 		})
 	}
 
+	//Модальные окна закрываются по клику на подложку
+	for (let i = 0; i < modalScope.length; i++) {
+		modalScope[i].addEventListener('click', (event) => { 
+			if (event.target === modalScope[i]) {
+				modalScope[i].style.display = 'none';
+			}
+			
+		})
+	}
+	
+	
 	
 })
