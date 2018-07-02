@@ -70,12 +70,16 @@ window.addEventListener('DOMContentLoaded', function() {
 		console.log(modalScope);
 		console.log(modalPopupClose);
 
+		//Ивенты с модальными окнами на странице
+		modalOpenState = false;
+
 	//Модальные окна открываются по клику на кнопку
 
 		//Модалка заказа дизайна
 	for (let i = 0; i < buttonOrderDesign.length; i++) {
 		buttonOrderDesign[i].addEventListener('click', () => {
 			modalPopupDesign.style.display = 'flex';
+			modalOpenState = true;
 
 		})
 	}
@@ -84,6 +88,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	for (let i = 0; i < buttonOrderConsultation.length; i++) {
 		buttonOrderConsultation[i].addEventListener('click', () => {
 			modalPopupConsultation.style.display = 'flex';
+			modalOpenState = true;
 
 		})
 	}
@@ -91,12 +96,14 @@ window.addEventListener('DOMContentLoaded', function() {
 	giftButton.addEventListener('click', () => {
 		modalPopupGift.style.display = 'flex';
 		giftButton.style.display = 'none';
+		modalOpenState = true;
 	});
 	
 	//Модальные окна закрываются по клику на крестик
 	for (let i = 0; i < modalPopupClose.length; i++) {
 		modalPopupClose[i].addEventListener('click', () => { 
 			modalScope[i].style.display = 'none';
+			modalOpenState = false;
 			/*//надо подумать над менее громоздким способом закрытия модалок
 			modalPopupDesign.style.display = 'none';
 			modalPopupConsultation.style.display = 'none';
@@ -110,11 +117,21 @@ window.addEventListener('DOMContentLoaded', function() {
 		modalScope[i].addEventListener('click', (event) => { 
 			if (event.target === modalScope[i]) {
 				modalScope[i].style.display = 'none';
+				modalOpenState = false;
 			}
 			
 		})
 	}
 	
+	//Появление модального окна через минуту
+	let modalMinuteAppear = setTimeout(modalAppear, 60000);
+
+	function modalAppear() {
+		if (modalOpenState === false) {
+			modalPopupConsultation.style.display = 'flex';
+		}
+	}
+
 	
 	
 })
