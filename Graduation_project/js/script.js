@@ -152,11 +152,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	buttonSeeMoreStyles.addEventListener('click', () => {
 		for (let i = hiddenStyles.length; i--;) {
-			hiddenStyles[i].className = 'col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1';
+			hiddenStyles[i].className = 'col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1 animated fadeInUp';
 			//console.log(hiddenStyles[i]) //wtf???
 		}
 		buttonSeeMoreStyles.style.display = 'none';
 	})
+
+	//Калькулятор стоимости
 
 	
 })
