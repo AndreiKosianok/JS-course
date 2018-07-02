@@ -93,11 +93,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		})
 	}
 		//Модалка подарка
-	giftButton.addEventListener('click', () => {
+	giftButton.addEventListener('click', giftModalAppear);
+
+	function giftModalAppear() {
 		modalPopupGift.style.display = 'flex';
 		giftButton.style.display = 'none';
 		modalOpenState = true;
-	});
+	}
 	
 	//Модальные окна закрываются по клику на крестик
 	for (let i = 0; i < modalPopupClose.length; i++) {
@@ -124,14 +126,25 @@ window.addEventListener('DOMContentLoaded', function() {
 	}
 	
 	//Появление модального окна через минуту
-	let modalMinuteAppear = setTimeout(modalAppear, 60000);
+	let modalMinuteAppear = setTimeout(consultationModalAppear, 60000);
 
-	function modalAppear() {
+	function consultationModalAppear() {
 		if (modalOpenState === false) {
 			modalPopupConsultation.style.display = 'flex';
 		}
 	}
 
+	//Модальное окно подарка при пролистывании страницы до конца
+	let body = document.documentElement;
+
+	window.addEventListener('scroll', scrollDown);
+
+	function scrollDown() {
+		if (modalOpenState == false && (body.scrollHeight - body.scrollTop) == body.clientHeight) {
+			giftModalAppear();
+			this.removeEventListener('scroll', scrollDown)
+		}
+	}
 	
 	
 })
