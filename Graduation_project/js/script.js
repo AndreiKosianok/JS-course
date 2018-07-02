@@ -151,9 +151,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		hiddenStyles = document.getElementsByClassName('hidden-lg');
 
 	buttonSeeMoreStyles.addEventListener('click', () => {
-		for (let i = 0; i <= hiddenStyles.length; i++) {
+		for (let i = hiddenStyles.length; i--;) {
 			hiddenStyles[i].className = 'col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1';
-			console.log(hiddenStyles[i]) //wtf???
+			//console.log(hiddenStyles[i]) //wtf???
 		}
 		buttonSeeMoreStyles.style.display = 'none';
 	})
