@@ -301,6 +301,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	accordionHide();
 	function accordionHide() {
 		for (let j = 0; j< accordionBlock.length; j++) {
+				accordionHeading[j].style.color = "#333333"
 				accordionBlock[j].style.display = "none";
 				accordionBlock[j].classList.add('animated', 'fadeInDown');
 			}
@@ -310,11 +311,11 @@ window.addEventListener('DOMContentLoaded', function() {
 		accordionHeading[i].addEventListener('click', function() {
 			if (accordionBlock[i].style.display === "none") {
 				accordionHide();
-				accordionBlock[i].style.display = "block";
-				accordionHeading[i].style.color = "rgb(197, 26, 187)";
+				accordionBlock[i].style.display = 'block';
+				accordionHeading[i].style.color = "#c51abb";
 			} else {
 				accordionBlock[i].style.display = "none";
-				accordionHeading[i].style.color = "rgb(51, 51, 51)";
+				accordionHeading[i].style.color = "#333333"
 			}
 		})
 	}
@@ -324,11 +325,11 @@ window.addEventListener('DOMContentLoaded', function() {
 		burgerButton = document.querySelector(".burger");
 
 	burgerButton.addEventListener('click', function() {
-		burgerMenu.style.display = 'block';
+		burgerMenu.style.display = burgerMenu.style.display === 'block' ? 'none' : 'block';
 	})
 
 	burgerButton.addEventListener('touchstart', function() {
-		burgerMenu.style.display = 'block';
+		burgerMenu.style.display = burgerMenu.style.display === 'block' ? 'none' : 'block';
 	})
 
 })
