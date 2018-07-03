@@ -4,12 +4,14 @@ window.addEventListener('DOMContentLoaded', function() {
 		modalWindows = require('./packParts/modalWindows.js'),
 		filterBlocks = require('./packParts/filterBlocks.js'),
 		imageHoverReplace = require('./packParts/imageHoverReplace.js'),
+		feedbackSlider = require('./packParts/feedbackSlider.js'),
 		calculator = require('./packParts/calculator.js');
 	
 	mainSlider();
 	modalWindows();
 	filterBlocks();
 	imageHoverReplace();
+	feedbackSlider();
 	calculator();
 	
 });
