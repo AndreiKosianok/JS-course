@@ -214,4 +214,37 @@ window.addEventListener('DOMContentLoaded', function() {
 			}
 		})
 	}
+
+	//Картинки при наведении replace('.png', '-1.png') .getAttribute("src")
+	let	sizeBlocksWrapper = document.querySelector(".sizes-wrapper"),
+		sizeBlocks = document.querySelectorAll(".sizes-block"),
+		sizeBlocksImages = document.querySelectorAll(".sizes-block img");
+
+	for (let i = 0; i < sizeBlocks.length; i++) {
+		sizeBlocks[i].addEventListener('mouseover', function(event) {
+			imageHover(event, i);
+		});
+		sizeBlocks[i].addEventListener('mouseout', function(event) {
+			imageHover(event, i);
+		});
+		sizeBlocks[i].addEventListener('touchstart', function(event) {
+			imageHover(event, i);
+		});
+
+		function imageHover(event, i) {
+			let imageSource = sizeBlocksImages[i].getAttribute('src');
+
+			if (this.event.type === 'mouseover' || this.event.type === 'touchstart' && this.event.target === sizeBlocksImages[i]) {
+				//console.log(sizeBlocks[i])
+				imageSource = imageSource.replace((i + 1) + '.png', (i + 1) + '-1.png');
+			} else {
+				//console.log('-1')
+				imageSource = imageSource.replace((i + 1) + '-1.png', (i + 1) + '.png');
+			}
+
+			sizeBlocksImages[i].setAttribute('src', imageSource);
+		}
+	}
+
+
 })
