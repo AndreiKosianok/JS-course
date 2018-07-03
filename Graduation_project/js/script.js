@@ -181,4 +181,29 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
+	//Фильтрация блоков портфолио
+	let portfolioButtons = document.querySelectorAll(".portfolio-menu li"),
+		portfolioBlocks = document.querySelectorAll(".portfolio-block"),
+		portfolioEmpty = document.querySelector(".portfolio-no");
+
+	for (i = 0; i < portfolioButtons.length; i++) {
+		portfolioButtons[i].addEventListener('click', function() {
+			for (j = 0; j < portfolioButtons.length; j++) {
+				portfolioButtons[j].classList.remove('active');
+			}
+
+			let currentButtonClass = this.className;
+			this.classList.add('active');
+
+			for (k = 0; k < portfolioBlocks.length; k++) {
+				if (portfolioBlocks[k].classList.contains(currentButtonClass)) {
+					console.log(currentButtonClass)
+					console.log(portfolioBlocks[k])
+					portfolioBlocks[k].style.display = 'block';
+				} else {
+					portfolioBlocks[k].style.display = 'none';
+				}
+			}
+		})
+	}
 })
