@@ -195,6 +195,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			let currentButtonClass = this.className,
 				blocksCount = 0;
 			this.classList.add('active');
+			portfolioEmpty.style.display = 'none';
 			//Сравнивает классы кнопки с классами доступных портретов и делает видимыми совпадающие
 			for (k = 0; k < portfolioBlocks.length; k++) {
 				if (portfolioBlocks[k].classList.contains(currentButtonClass)) {
@@ -208,7 +209,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				//Если количество скрытых портретов равно количеству всех доступных портретов проявляем блок portfolio-no
 				//console.log(blocksCount)
 				if (blocksCount == portfolioBlocks.length) {
-					portfolioEmpty.style.display = 'block'
+					portfolioEmpty.style.display = 'block';
 				}
 			}
 		})
