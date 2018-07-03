@@ -230,16 +230,19 @@ window.addEventListener('DOMContentLoaded', function() {
 		sizeBlocks[i].addEventListener('touchstart', function(event) {
 			imageHover(event, i);
 		});
+		sizeBlocks[i].addEventListener('touchcancel', function(event) {
+			imageHover(event, i);
+		});
 
 		function imageHover(event, i) {
 			let imageSource = sizeBlocksImages[i].getAttribute('src');
 
-			if (this.event.type === 'mouseover' || this.event.type === 'touchstart' && this.event.target === sizeBlocksImages[i]) {
+			if (event.type === 'mouseover' || event.type === 'touchstart' && event.target === sizeBlocksImages[i]) {
 				//console.log(sizeBlocks[i])
-				imageSource = imageSource.replace((i + 1) + '.png', (i + 1) + '-1.png');
+				imageSource = imageSource.replace('sizes-' + (i + 1) + '.png', 'sizes-' + (i + 1) + '-1.png');
 			} else {
 				//console.log('-1')
-				imageSource = imageSource.replace((i + 1) + '-1.png', (i + 1) + '.png');
+				imageSource = imageSource.replace('sizes-' + (i + 1) + '-1.png', 'sizes-' + (i + 1) + '.png');
 			}
 
 			sizeBlocksImages[i].setAttribute('src', imageSource);
