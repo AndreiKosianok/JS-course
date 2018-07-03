@@ -307,7 +307,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	}
 
 	for (let i = 0; i< accordionHeading.length; i++) {
-		accordionHeading[i].addEventListener('click', function(event) {
+		accordionHeading[i].addEventListener('click', function() {
 			if (accordionBlock[i].style.display === "none") {
 				accordionHide();
 				accordionBlock[i].style.display = "block";
@@ -319,5 +319,16 @@ window.addEventListener('DOMContentLoaded', function() {
 		})
 	}
 
+	//Гамбургер-меню
+	let burgerMenu = document.querySelector(".burger-menu"),
+		burgerButton = document.querySelector(".burger");
+
+	burgerButton.addEventListener('click', function() {
+		burgerMenu.style.display = 'block';
+	})
+
+	burgerButton.addEventListener('touchstart', function() {
+		burgerMenu.style.display = 'block';
+	})
 
 })
