@@ -192,16 +192,23 @@ window.addEventListener('DOMContentLoaded', function() {
 				portfolioButtons[j].classList.remove('active');
 			}
 
-			let currentButtonClass = this.className;
+			let currentButtonClass = this.className,
+				blocksCount = 0;
 			this.classList.add('active');
-
+			//Сравнивает классы кнопки с классами доступных портретов и делает видимыми совпадающие
 			for (k = 0; k < portfolioBlocks.length; k++) {
 				if (portfolioBlocks[k].classList.contains(currentButtonClass)) {
-					console.log(currentButtonClass)
-					console.log(portfolioBlocks[k])
+					/*console.log(currentButtonClass)
+					console.log(portfolioBlocks[k])*/
 					portfolioBlocks[k].style.display = 'block';
 				} else {
 					portfolioBlocks[k].style.display = 'none';
+					blocksCount += 1;
+				}
+				//Если количество скрытых портретов равно количеству всех доступных портретов проявляем блок portfolio-no
+				//console.log(blocksCount)
+				if (blocksCount == portfolioBlocks.length) {
+					portfolioEmpty.style.display = 'block'
 				}
 			}
 		})
