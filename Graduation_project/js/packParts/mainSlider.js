@@ -1,10 +1,8 @@
 // Верхний Main слайдер
 function mainSlider() {
 	
-	let mainSlideIndex = 1, // 0 - fro v2
+	let mainSlideIndex = 1,
 		mainSlides = document.getElementsByClassName('main-slider-item');
-
-	// Вариант 1
 
 	showMainSlides(mainSlideIndex);
  	
@@ -34,20 +32,5 @@ function mainSlider() {
 	function changeMainSlides (n) {
 		showMainSlides(mainSlideIndex += n)
 	}
-	
-
-	// Вариант 2	
-	/*
-	function showMainSlides() {
-		setSlideInterval = setTimeout(function() {
-			mainSlides[mainSlideIndex].style.display = 'block';
-			mainSlides[mainSlideIndex].classList.add('animated', 'fadeInDown');
-			mainSlideIndex = (mainSlideIndex + 1) % mainSlides.length;
-			mainSlides[mainSlideIndex].style.display = 'none';
-			mainSlides[mainSlideIndex].classList.remove('animated', 'fadeInDown');
-			showMainSlides();
-		}, 5000);
-	}
-	*/
 };
 exports default mainSlider;
