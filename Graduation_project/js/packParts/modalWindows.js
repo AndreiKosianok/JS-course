@@ -12,7 +12,7 @@ function modalWindows() {
 		modalScope = [modalPopupConsultation, modalPopupGift, modalPopupDesign],
 
 		//Крестик
-		modalPopupClose = document.querySelectorAll('.popup-close');
+		modalPopupClose = document.querySelectorAll('.popup-close'),
 
 		//Ивенты с модальными окнами на странице
 		modalOpenState = false;
@@ -25,7 +25,7 @@ function modalWindows() {
 			modalPopupDesign.style.display = 'flex';
 			modalOpenState = true;
 
-		})
+		});
 	}
 
 		//Модалка заказа консультации
@@ -34,7 +34,7 @@ function modalWindows() {
 			modalPopupConsultation.style.display = 'flex';
 			modalOpenState = true;
 
-		})
+		});
 	}
 		//Модалка подарка
 	giftButton.addEventListener('click', giftModalAppear);
@@ -50,7 +50,7 @@ function modalWindows() {
 		modalPopupClose[i].addEventListener('click', () => { 
 			modalScope[i].style.display = 'none';
 			modalOpenState = false;
-		})
+		});
 	}
 
 	//Модальные окна закрываются по клику на подложку
@@ -61,7 +61,7 @@ function modalWindows() {
 				modalOpenState = false;
 			}
 			
-		})
+		});
 	}
 	
 	//Появление модального окна через минуту
@@ -79,9 +79,9 @@ function modalWindows() {
 	window.addEventListener('scroll', scrollDown);
 
 	function scrollDown() {
-		if (modalOpenState == false && (body.scrollHeight - body.scrollTop) == body.clientHeight) {
+		if (modalOpenState === false && (body.scrollHeight - body.scrollTop) == body.clientHeight) {
 			giftModalAppear();
-			this.removeEventListener('scroll', scrollDown)
+			this.removeEventListener('scroll', scrollDown);
 		}
 	}
 	
@@ -94,6 +94,6 @@ function modalWindows() {
 			hiddenStyles[i].className = 'col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1 animated fadeInUp';
 		}
 		buttonSeeMoreStyles.style.display = 'none';
-	})
+	});
 }
-exports default modalWindows;
+module.exports = modalWindows;

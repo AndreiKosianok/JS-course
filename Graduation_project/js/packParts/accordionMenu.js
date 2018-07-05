@@ -21,8 +21,8 @@ function accordionMenu() {
 				accordionBlock[i].style.display = "none";
 				accordionHeading[i].style.color = "rgb(51, 51, 51)";
 			}
-		})
+		});
 	}
 }
 
-exports default accordionMenu;
+module.exports = accordionMenu;

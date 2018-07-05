@@ -66,10 +66,8 @@ window.addEventListener('DOMContentLoaded', function() {
 		modalScope = [modalPopupConsultation, modalPopupGift, modalPopupDesign],
 
 		//Крестик
-		modalPopupClose = document.querySelectorAll('.popup-close');
-		console.log(modalScope);
-		console.log(modalPopupClose);
-
+		modalPopupClose = document.querySelectorAll('.popup-close'),
+		
 		//Ивенты с модальными окнами на странице
 		modalOpenState = false;
 
@@ -172,9 +170,9 @@ window.addEventListener('DOMContentLoaded', function() {
 	promocodeInput.addEventListener('change', priceCount);
 
 	function priceCount() {
-		total = (canvasSize.options.selectedIndex + canvasMaterial.options.selectedIndex) * 1000
+		total = (canvasSize.options.selectedIndex + canvasMaterial.options.selectedIndex) * 1000;
 		if (canvasSize.options.selectedIndex !== 0 && canvasMaterial.options.selectedIndex !== 0) {
-			discountPopArt = promocodeInput.value == 'IWANTPOPART' ? 0.7 : 1
+			let discountPopArt = promocodeInput.value == 'IWANTPOPART' ? 0.7 : 1;
 			calcPriceField.innerHTML = (total + (canvasOptions.options.selectedIndex * 500)) * discountPopArt;
 		} else {
 			calcPriceField.innerHTML = 'Для расчета нужно выбрать размер картины и материал картины';
@@ -186,9 +184,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		portfolioBlocks = document.querySelectorAll(".portfolio-block"),
 		portfolioEmpty = document.querySelector(".portfolio-no");
 
-	for (i = 0; i < portfolioButtons.length; i++) {
+	for (let i = 0; i < portfolioButtons.length; i++) {
 		portfolioButtons[i].addEventListener('click', function() {
-			for (j = 0; j < portfolioButtons.length; j++) {
+			for (let j = 0; j < portfolioButtons.length; j++) {
 				portfolioButtons[j].classList.remove('active');
 			}
 
@@ -197,7 +195,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			this.classList.add('active');
 			portfolioEmpty.style.display = 'none';
 			//Сравнивает классы кнопки с классами доступных портретов и делает видимыми совпадающие
-			for (k = 0; k < portfolioBlocks.length; k++) {
+			for (let k = 0; k < portfolioBlocks.length; k++) {
 				if (portfolioBlocks[k].classList.contains(currentButtonClass)) {
 					/*console.log(currentButtonClass)
 					console.log(portfolioBlocks[k])*/
@@ -216,9 +214,22 @@ window.addEventListener('DOMContentLoaded', function() {
 	}
 
 	//Картинки при наведении replace('.png', '-1.png') .getAttribute("src")
-	let	sizeBlocksWrapper = document.querySelector(".sizes-wrapper"),
-		sizeBlocks = document.querySelectorAll(".sizes-block"),
+	let	sizeBlocks = document.querySelectorAll(".sizes-block"),
 		sizeBlocksImages = document.querySelectorAll(".sizes-block img");
+
+	function imageHover(event, i) {
+		let imageSource = sizeBlocksImages[i].getAttribute('src');
+
+		if (event.type === 'mouseover' || event.type === 'touchstart' && event.target === sizeBlocksImages[i]) {
+			//console.log(sizeBlocks[i])
+			imageSource = imageSource.replace('sizes-' + (i + 1) + '.png', 'sizes-' + (i + 1) + '-1.png');
+		} else {
+			//console.log('-1')
+			imageSource = imageSource.replace('sizes-' + (i + 1) + '-1.png', 'sizes-' + (i + 1) + '.png');
+		}
+
+		sizeBlocksImages[i].setAttribute('src', imageSource);
+	}
 
 	for (let i = 0; i < sizeBlocks.length; i++) {
 		sizeBlocks[i].addEventListener('mouseover', function(event) {
@@ -234,19 +245,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			imageHover(event, i);
 		});
 
-		function imageHover(event, i) {
-			let imageSource = sizeBlocksImages[i].getAttribute('src');
-
-			if (event.type === 'mouseover' || event.type === 'touchstart' && event.target === sizeBlocksImages[i]) {
-				//console.log(sizeBlocks[i])
-				imageSource = imageSource.replace('sizes-' + (i + 1) + '.png', 'sizes-' + (i + 1) + '-1.png');
-			} else {
-				//console.log('-1')
-				imageSource = imageSource.replace('sizes-' + (i + 1) + '-1.png', 'sizes-' + (i + 1) + '.png');
-			}
-
-			sizeBlocksImages[i].setAttribute('src', imageSource);
-		}
 	}
 
 	//Нижний слайдер с отзывами //document.querySelectorAll(".feedback-slider-item")

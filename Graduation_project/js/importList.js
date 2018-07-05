@@ -6,6 +6,8 @@ window.addEventListener('DOMContentLoaded', function() {
 		imageHoverReplace = require('./packParts/imageHoverReplace.js'),
 		feedbackSlider = require('./packParts/feedbackSlider.js'),
 		accordionMenu = require('./packParts/accordionMenu.js'),
+		formsAjax = require('./packParts/formsAjax.js'),
+		hamburgerMenu = require('./packParts/hamburgerMenu.js'),
 		calculator = require('./packParts/calculator.js');
 	
 	mainSlider();
@@ -14,6 +16,8 @@ window.addEventListener('DOMContentLoaded', function() {
 	imageHoverReplace();
 	feedbackSlider();
 	accordionMenu();
+	formsAjax();
+	hamburgerMenu();
 	calculator();
 	
 });

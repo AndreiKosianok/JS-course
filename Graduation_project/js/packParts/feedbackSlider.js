@@ -7,7 +7,7 @@ function feedbackSlider() {
 		feedbackSliderTimer = setInterval(function() {
 			nextFeedbackSlider(1);
 		feedbackSliderItem[feedbackSliderIndex - 1].className = 'feedback-slider-item animated fadeInRight';
-			}, 5000);
+			}, 8000);
 
 	showFeedbackSlider(feedbackSliderIndex);
 
@@ -30,17 +30,17 @@ function feedbackSlider() {
 	function nextFeedbackSlider(n) {
 		showFeedbackSlider(feedbackSliderIndex += n);
 	}
-	//Кнопка отызв туда
+	//Кнопка отзыв туда
 	feedbackSliderBtnNext.addEventListener('click', () => {
 		nextFeedbackSlider(1);
 		feedbackSliderItem[feedbackSliderIndex - 1].className = 'feedback-slider-item animated fadeInRight';
-	})
+	});
 	//Кнопка отзыв сюда
 	feedbackSliderBtnPrev.addEventListener('click', () => {
 		nextFeedbackSlider(-1);
 		feedbackSliderItem[feedbackSliderIndex - 1].className = 'feedback-slider-item animated fadeInLeft';
-	})
+	});
 
 }
 
-exports default feedbackSlider;
+module.exports = feedbackSlider;

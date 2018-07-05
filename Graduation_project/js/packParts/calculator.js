@@ -14,9 +14,9 @@ function calculator() {
 	promocodeInput.addEventListener('change', priceCount);
 
 	function priceCount() {
-		total = (canvasSize.options.selectedIndex + canvasMaterial.options.selectedIndex) * 1000
+		total = (canvasSize.options.selectedIndex + canvasMaterial.options.selectedIndex) * 1000;
 		if (canvasSize.options.selectedIndex !== 0 && canvasMaterial.options.selectedIndex !== 0) {
-			discountPopArt = promocodeInput.value == 'IWANTPOPART' ? 0.7 : 1
+			let discountPopArt = promocodeInput.value == 'IWANTPOPART' ? 0.7 : 1;
 			calcPriceField.innerHTML = (total + (canvasOptions.options.selectedIndex * 500)) * discountPopArt;
 		} else {
 			calcPriceField.innerHTML = 'Для расчета нужно выбрать размер картины и материал картины';
@@ -24,4 +24,4 @@ function calculator() {
 	}
 
 }
-exports default calculator;
+module.exports = calculator;

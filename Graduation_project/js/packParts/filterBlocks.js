@@ -4,9 +4,9 @@ function filterBlocks() {
 		portfolioBlocks = document.querySelectorAll(".portfolio-block"),
 		portfolioEmpty = document.querySelector(".portfolio-no");
 
-	for (i = 0; i < portfolioButtons.length; i++) {
+	for (let i = 0; i < portfolioButtons.length; i++) {
 		portfolioButtons[i].addEventListener('click', function() {
-			for (j = 0; j < portfolioButtons.length; j++) {
+			for (let j = 0; j < portfolioButtons.length; j++) {
 				portfolioButtons[j].classList.remove('active');
 			}
 
@@ -15,7 +15,7 @@ function filterBlocks() {
 			this.classList.add('active');
 			portfolioEmpty.style.display = 'none';
 			//Сравнивает классы кнопки с классами доступных портретов и делает видимыми совпадающие
-			for (k = 0; k < portfolioBlocks.length; k++) {
+			for (let k = 0; k < portfolioBlocks.length; k++) {
 				if (portfolioBlocks[k].classList.contains(currentButtonClass)) {
 					portfolioBlocks[k].style.display = 'block';
 				} else {
@@ -27,7 +27,7 @@ function filterBlocks() {
 					portfolioEmpty.style.display = 'block';
 				}
 			}
-		})
+		});
 	}
 }
-exports default filterBlocks;
+module.exports = filterBlocks;
